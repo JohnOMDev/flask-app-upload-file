@@ -1,6 +1,9 @@
 ## Project Overview
-
-Serverless project that uses Docker, circleci and Kubernetes skills acquired in the Udacity nanodegree course to operationalize a Machine Learning Microservice API. Project was developed, tested and pushed to production from my local machine
+Build a flask server with the following pages:
+Index page
+Uploader page where you can upload a file SMALLER THAN 1MB to an api
+The API is hosted at https://patw1h5276.execute-api.eu-west-1.amazonaws.com/beta/upload and accepts POST requests only at the specified URL.
+The server must manage checking the file size and only send it if it's smaller than 1MB.
 
 ### Project Tasks
 
@@ -32,6 +35,5 @@ Your project goal is to operationalize this working, machine learning microservi
 
 1. Standalone:  `python app.py`
 2. Run the Docker file:  `./run_docker.sh`
-3. Run the Kubernetes file:  `./run_kubernetes.sh`
 4. Run the make prediction file  `make_prediction.sh`
 5. Run the Upload docker file:  `./upload_docker.sh`
