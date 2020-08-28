@@ -6,17 +6,17 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 #API
-app.config["api"] = "https://patw1h5276.execute-api.eu-west-1.amazonaws.com/beta/upload/" 
+app.config["api"] = "https://patw1h5276.execute-api.eu-west-1.amazonaws.com/beta/upload/"
  #File extension
 ALLOWED_EXTS = {"txt","csv","dat","XLS","XLSX","doc","docx","pdf","ppt"}
 
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
 
-""" custom function to raise exception for file extension and we be later used inside the index function """
+"""custom function to raise exception for file extension """
 def check_file(file):
     return '.' in file and file.rsplit('.',1)[1].lower() in ALLOWED_EXTS
 
-""" Main app for viewing the index page, uploading the file and posting it """
+"""Main app for viewing the index page, uploading the file and posting it"""
 @app.route("/index", methods=["POST","GET"])
 
 def index():
@@ -45,7 +45,7 @@ def index():
 
     return render_template("index.html", filename = filename)
 
-""" error handler for the http requests """
+"""error handler for the http requests"""
 @app.errorhandler(413)
 def payload_large(e):
     return render_template("413.html"),413
