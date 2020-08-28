@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<h1>Haensel-ams Task</h1>
+
+{% endblock %}
+
+{% block body %}
+
+{% if error %}
+    <p class="alert alert-danger" role="alert">{{ error }}</p>
+{% endif %}
+
+{% if filename %}
+
+<p class="alert alert-success" role="alert">Your file: {{filename}} has been uploaded successfully</p>
+
+{% else %}
+
+    <form action="/index" method="post", enctype="multipart/form-data">
+        <label> <h3>Please Select Your File</h3> </label>
+        <input type="file" name="file" />
+        <input class="btn btn-primary" type="submit" name="submit" value="submit">
+    </form>
+
+{% endif %}
+
+{% endblock %}
