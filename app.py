@@ -1,4 +1,4 @@
-"""The small flask app for uploading files"""
+""" The small flask app for uploading files """
 import os
 from flask import Flask, render_template, request
 import requests
@@ -12,19 +12,19 @@ ALLOWED_EXTS = {"txt","csv","dat","XLS","XLSX","doc","docx","pdf","ppt"}
 
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
 
-"""custom function to raise exception for file extension and we be later used inside the index function"""
+""" custom function to raise exception for file extension and we be later used inside the index function """
 def check_file(file):
     return '.' in file and file.rsplit('.',1)[1].lower() in ALLOWED_EXTS
 
-"""Main app for viewing the index page, uploading the file and posting it"""
-
+""" Main app for viewing the index page, uploading the file and posting it """
 @app.route("/index", methods=["POST","GET"])
+
 def index():
     error = None
     filename = None
-#Creating post request
+# Creating post request
     if request.method == "POST":
-#Creating exception and error we might encounter
+# Creating exception and error we might encounter
         if "file" not in request.files:
             error ="File not selected"
             return render_template ("index.html", error=error)
@@ -40,12 +40,12 @@ def index():
             error = "This file extension is not allowed"
             return render_template('index.html', error = error)
         else:
-#The request that post the payload after appending the api and the filename
+# The request that post the payload after appending the api and the filename
             requests.post(os.path.join(app.config["api"],filename),file)
 
     return render_template("index.html", filename = filename)
 
-"""error handler for the http requests"""
+""" error handler for the http requests """
 @app.errorhandler(413)
 def payload_large(e):
     return render_template("413.html"),413
