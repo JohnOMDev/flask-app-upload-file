@@ -47,18 +47,22 @@ def index():
 
 # """error handler for the http requests"""
 @app.errorhandler(413)
+# pylint: disable=unused-argument
 def payload_large(error):
     return render_template("413.html"),413
 
 @app.errorhandler(404)
+#   pylint: disable=unused-argument
 def page_not_found(error):
     return render_template("404.html"),404
 
 @app.errorhandler(500)
+#   pylint: disable=unused-argument
 def server_error(error):
     return render_template("500.html"),500
 
 @app.errorhandler(403)
+#   pylint: disable=unused-argument
 def forbidden(error):
     return render_template("403.html"),403
 
