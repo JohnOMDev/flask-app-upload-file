@@ -26,7 +26,7 @@ The API is hosted at https://patw1h5276.execute-api.eu-west-1.amazonaws.com/beta
 2. Run the Docker file:  `./run_docker.sh`
 3. Run the Upload docker file:  `./upload_docker.sh`
 4. Standalone:  `python app.py`
-5. Delete all the setup  `delete.sh`
+5. Delete all the setup  `./delete.sh`
 
 ### Yet to be done
 * pytest
