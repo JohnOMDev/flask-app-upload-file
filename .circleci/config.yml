@@ -5,7 +5,7 @@ jobs:
 
       - image: circleci/python:3.6.1
 
-    working_directory: ~/app
+    working_directory: ~/haensel-ams
 
     steps:
       - checkout
@@ -20,16 +20,16 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m venv app
-            . app/bin/activate
+            python3 -m venv haensel-ams
+            . haensel-ams/bin/activate
             make install
       - save_cache:
           paths:
-            - ./app
+            - ./haensel-ams
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       - run:
           name: run lint
           command: |
-            . app/bin/activate
+            . haensel-ams/bin/activate
             make lint
